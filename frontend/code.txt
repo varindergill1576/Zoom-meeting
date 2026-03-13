@@ -1,0 +1,41 @@
+import { useState } from "react"
+
+export const Authentication = () => {
+    let [formdata,setform] = useState(0)
+    let [name,setname] = useState('')
+    let [username,setusername] = useState('')
+    let [password,setpassword] = useState('')
+
+
+    return(
+        <div >
+      <div >
+            <button onClick={ () => setform(1)}>sign in</button>
+            <button onClick={() => setform(0)}>sign up</button>
+        </div>
+        <form method= "post" action={'http://localhost:8000/register'} >
+
+       {formdata === 0 ?<input type="text" name="name" required placeholder="enter the name" 
+        value={name} onChange={(e)=> setname(e.target.value)}/>
+        : <div></div>}
+
+       <input type="text" name="username" placeholder="enter the username" required value={username}
+        onChange={(e) => setusername(e.target.value)}/>
+
+       <input type="password" name="password" placeholder="enter the password" required value={password}
+       onChange={(e) => setpassword(e.target.value)}/>
+
+       {formdata === 0 ?<button>Register</button> : <button>login</button>}
+       
+       </form>
+
+
+
+    
+
+
+        </div>
+        
+        
+    )
+}
